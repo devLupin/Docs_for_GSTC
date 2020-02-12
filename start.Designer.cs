@@ -36,6 +36,8 @@
             this.explain_lbl = new System.Windows.Forms.Label();
             this.login_btn = new System.Windows.Forms.Button();
             this.operationHQTeam = new System.Windows.Forms.ComboBox();
+            this.namereset_btn = new System.Windows.Forms.Button();
+            this.all_task_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // selectTeam_lbl
@@ -124,11 +126,35 @@
             this.operationHQTeam.TabIndex = 7;
             this.operationHQTeam.Text = "운영본부";
             // 
+            // namereset_btn
+            // 
+            this.namereset_btn.Font = new System.Drawing.Font("휴먼둥근헤드라인", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.namereset_btn.Location = new System.Drawing.Point(186, 361);
+            this.namereset_btn.Name = "namereset_btn";
+            this.namereset_btn.Size = new System.Drawing.Size(205, 60);
+            this.namereset_btn.TabIndex = 8;
+            this.namereset_btn.Text = "이름 초기화";
+            this.namereset_btn.UseVisualStyleBackColor = true;
+            this.namereset_btn.Click += new System.EventHandler(this.namereset_btn_Click);
+            // 
+            // all_task_btn
+            // 
+            this.all_task_btn.Font = new System.Drawing.Font("휴먼둥근헤드라인", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.all_task_btn.Location = new System.Drawing.Point(538, 79);
+            this.all_task_btn.Name = "all_task_btn";
+            this.all_task_btn.Size = new System.Drawing.Size(250, 133);
+            this.all_task_btn.TabIndex = 9;
+            this.all_task_btn.Text = "전체 업무 보기";
+            this.all_task_btn.UseVisualStyleBackColor = true;
+            this.all_task_btn.Click += new System.EventHandler(this.all_task_btn_Click);
+            // 
             // startLayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.all_task_btn);
+            this.Controls.Add(this.namereset_btn);
             this.Controls.Add(this.operationHQTeam);
             this.Controls.Add(this.login_btn);
             this.Controls.Add(this.explain_lbl);
@@ -137,6 +163,8 @@
             this.Controls.Add(this.planningStrategyTeam);
             this.Controls.Add(this.managementOperationTeam);
             this.Controls.Add(this.selectTeam_lbl);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "startLayout";
             this.Text = "GSTC";
             this.ResumeLayout(false);
@@ -154,6 +182,8 @@
         private System.Windows.Forms.Label explain_lbl;
         private System.Windows.Forms.Button login_btn;
         private System.Windows.Forms.ComboBox operationHQTeam;
+        private System.Windows.Forms.Button namereset_btn;
+        private System.Windows.Forms.Button all_task_btn;
     }
 }
 

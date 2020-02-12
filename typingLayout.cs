@@ -16,8 +16,11 @@ namespace Docs_for_GSTC
         private string dbServer, dbName, dbUid, dbPwd, DB_INFO;
         MySqlConnection conn;
 
-        string[][] taskList = new string[9][]
+        string[][] taskList = new string[11][]
         {
+            new string[] { "kangsinho", "강신호 본부장" },
+            new string[] { "janghyunyong", "장현용 수석팀장" },
+
             new string[] { "leeguwon", "조합관리", "인사관리" },
             new string[] { "leejihwi", "운영사업,예산관리", "센터행사기획" },
             new string[] { "jidosung", "체험관운영", "보안관리", "사용성평가" },
@@ -43,7 +46,7 @@ namespace Docs_for_GSTC
             string access_date = now.ToString("yyyy-MM-dd H:mm:ss");
 
             // Current user setting
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 11; i++)
             {
                 if (taskList[i][0].Equals(curUser))
                 {
@@ -52,8 +55,6 @@ namespace Docs_for_GSTC
                     break;
                 }
             }
-
-            MessageBox.Show(node.ToString());
             // Add items
             for (int i = 1; i < taskList[node].Length; i++)
             {
@@ -91,13 +92,14 @@ namespace Docs_for_GSTC
                         conn.Open();
                         try
                         {
-                            string sql = "CREATE TABLE IF NOT EXISTS " + "TEST" + "(" +
-                                "NAME VARCHAR(30) NOT NULL," +
+                            string sql = "CREATE TABLE IF NOT EXISTS " + "TEST2" + "(" +
+                                "NAME VARCHAR(30) NOT NULL, " +
+                                "TASK_NAME VARCHAR(50) NOT NULL, " + 
                                 "LASTWEEK_TASK VARCHAR(500) NOT NULL, " +
                                 "LASTWEEK_TASK_ACHIEVE VARCHAR(500) NOT NULL, " +
                                 "THISWEEK_TASK VARCHAR(500) NOT NULL, " +
                                 "THISWEEK_TASK_ACHIEVE VARCHAR(500) NOT NULL, " +
-                                "SAVE_DATE DATETIME PRIMARY KEY NOT NULL" +
+                                "SAVE_DATE DATE PRIMARY KEY NOT NULL" +
                                 ")";
                             MySqlCommand cmd = new MySqlCommand(sql, conn);
                             cmd.ExecuteNonQuery();
@@ -111,14 +113,21 @@ namespace Docs_for_GSTC
                         try
                         {
                             string save_date = now.ToString("yyyy-MM-dd");
-                            string sql = "INSERT INTO " + "TEST" + " VALUES(" +
+                            string sql = "INSERT INTO " + "TEST2" + " VALUES(" +
                                 "'" + userName + "'," +
+                                "'" + selectTask.Text + "'," +
                                 "'" + lastWeekTask.Text + "'," +
                                 "'" + lastWeekTaskAchievement.Text + "'," +
                                 "'" + thisWeekTask.Text + "'," +
                                 "'" + thisWeekTaskAchievement.Text + "'," +
                                 "'" + save_date + "'" +
-                                ")";
+                                ")" +
+                                "ON DUPLICATE KEY UPDATE " +
+                                "LASTWEEK_TASK = " + "'" + lastWeekTask.Text + "'," +
+                                "LASTWEEK_TASK_ACHIEVE = " + "'" + lastWeekTaskAchievement.Text + "'," +
+                                "THISWEEK_TASK = " + "'" + lastWeekTask.Text + "'," +
+                                "THISWEEK_TASK_ACHIEVE = " + "'" + lastWeekTaskAchievement.Text + "'";
+
                             MySqlCommand cmd = new MySqlCommand(sql, conn);
                             cmd.ExecuteNonQuery();
                         }

@@ -57,7 +57,7 @@
             this.lastWeekTaskAchievement.Name = "lastWeekTaskAchievement";
             this.lastWeekTaskAchievement.Size = new System.Drawing.Size(73, 451);
             this.lastWeekTaskAchievement.TabIndex = 1;
-            this.lastWeekTaskAchievement.Text = "\n✔\n•(50%)\n•(20%)";
+            this.lastWeekTaskAchievement.Text = "\nOK\n(50%)\n(20%)";
             // 
             // thisWeekTask
             // 

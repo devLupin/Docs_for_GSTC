@@ -18,24 +18,15 @@ namespace Docs_for_GSTC
         string[] AIRnD = { "김창석", "임현택" };
         string[] HRNurture = { "홍남표", "신규인력" };
 
-        string[] operationHQ_temp = {}
-
-        string[][] taskList = new string[9][]
-        {
-            new string[] { "leeguwon", "조합관리", "인사관리" },
-            new string[] { "leejihwi", "운영사업,예산관리", "센터행사기획" },
-            new string[] { "jidosung", "체험관운영", "보안관리", "사용성평가" },
-            new string[] { "jungkukhwan", "시설관리" },
-
-            new string[] { "choihwimin", "신규사업기획", "센터홍보" },
-            new string[] { "seolhyungho", "센터기업지원", "공동활용기업" },
-            new string[] { "kimbora", "연계사업1(지역연고)" },
-
-            new string[] { "kimchangseok", "R&D사업기획", "센터\n 데이터확보" },
-            new string[] { "limhyuntaek", "시스템개발 및 구축", "자산운용/관리" }
-        };
+        string[] operationHQ_eng = { "kangsinho", "janghyunyong" };
+        string[] managementOperation_eng = { "jungkukhwan", "jidosung", "leeguwon", "leejihwi" };
+        string[] planningStrategy_eng = { "seolhyungho", "kimbora", "choihwimin" };
+        string[] AIRnD_eng = { "kimchangseok", "limhyuntaek" };
+        string[] HRNurture_eng = { "hongnampyo" };
 
         bool chk = true;
+
+        DateTime now;
 
         public startLayout()
         {
@@ -61,6 +52,8 @@ namespace Docs_for_GSTC
             {
                 HRNurtureTeam.Items.Add(HRNurture[i]);
             }
+
+            now = DateTime.Now;
         }
 
         private void login_btn_Click(object sender, EventArgs e)
@@ -74,7 +67,17 @@ namespace Docs_for_GSTC
                 if (MessageBox.Show(operationHQTeam.Text + "님이 맞습니까? 본인이 아닐경우 아니요를 눌러주세요.", "",
                     MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    typingLayout typing = new typingLayout(operationHQTeam.Text);
+                    int node = -1;
+                    for(int i=0; i<operationHQ.Length; i++)
+                    {
+                        if (operationHQ[i].Equals(operationHQTeam.Text))
+                        {
+                            node = i;
+                            break;
+                        }
+                    }                
+
+                    typingLayout typing = new typingLayout(operationHQ_eng[node]);
                     typing.Show();
                 }
                 else
@@ -88,7 +91,17 @@ namespace Docs_for_GSTC
                 if (MessageBox.Show(managementOperationTeam.Text + "님이 맞습니까? 본인이 아닐경우 아니요를 눌러주세요.", "",
                     MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    typingLayout typing = new typingLayout(managementOperationTeam.Text);
+                    int node = -1;
+                    for (int i = 0; i < managementOperation.Length; i++)
+                    {
+                        if (managementOperation[i].Equals(managementOperationTeam.Text))
+                        {
+                            node = i;
+                            break;
+                        }
+                    }
+
+                    typingLayout typing = new typingLayout(managementOperation_eng[node]);
                     typing.Show();
                 }
                 else
@@ -102,7 +115,17 @@ namespace Docs_for_GSTC
                 if (MessageBox.Show(planningStrategyTeam.Text + "님이 맞습니까? 본인이 아닐경우 아니요를 눌러주세요.", "",
                     MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    typingLayout typing = new typingLayout(planningStrategyTeam.Text);
+                    int node = -1;
+                    for (int i = 0; i < planningStrategy.Length; i++)
+                    {
+                        if (planningStrategy[i].Equals(planningStrategyTeam.Text))
+                        {
+                            node = i;
+                            break;
+                        }
+                    }
+
+                    typingLayout typing = new typingLayout(planningStrategy_eng[node]);
                     typing.Show();
                 }
                 else
@@ -116,7 +139,17 @@ namespace Docs_for_GSTC
                 if (MessageBox.Show(AIRnDTeam.Text + "님이 맞습니까? 본인이 아닐경우 아니요를 눌러주세요.", "",
                     MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    typingLayout typing = new typingLayout(AIRnDTeam.Text);
+                    int node = -1;
+                    for (int i = 0; i < AIRnD.Length; i++)
+                    {
+                        if (AIRnD[i].Equals(AIRnDTeam.Text))
+                        {
+                            node = i;
+                            break;
+                        }
+                    }
+
+                    typingLayout typing = new typingLayout(AIRnD_eng[node]);
                     typing.Show();
                 }
                 else
@@ -129,7 +162,17 @@ namespace Docs_for_GSTC
                 if (MessageBox.Show(HRNurtureTeam.Text + "님이 맞습니까? 본인이 아닐경우 아니요를 눌러주세요.", "",
                     MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    typingLayout typing = new typingLayout(HRNurtureTeam.Text);
+                    int node = -1;
+                    for (int i = 0; i < HRNurture.Length; i++)
+                    {
+                        if (HRNurture[i].Equals(HRNurtureTeam.Text))
+                        {
+                            node = i;
+                            break;
+                        }
+                    }
+
+                    typingLayout typing = new typingLayout(HRNurture_eng[node]);
                     typing.Show();
                 }
                 else
@@ -146,8 +189,28 @@ namespace Docs_for_GSTC
             managementOperationTeam.Text = "관리운영팀";
             planningStrategyTeam.Text = "기획전략팀";
             AIRnDTeam.Text = "인공지능R&D팀";
+            HRNurtureTeam.Text = "인력양성팀";
+
+            operationHQTeam.Refresh();
+            managementOperationTeam.Refresh();
+            planningStrategyTeam.Refresh();
+            AIRnDTeam.Refresh();
+            HRNurtureTeam.Refresh();
 
             chk = true;
+        }
+
+        private void namereset_btn_Click(object sender, EventArgs e)
+        {
+            titleInit();
+        }
+
+        private void all_task_btn_Click(object sender, EventArgs e)
+        {
+            string date = now.ToString("yyyy-MM-dd");
+
+            resultLayout result = new resultLayout(date);
+            result.Show();
         }
     }
 }
